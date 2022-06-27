@@ -1,5 +1,5 @@
 Clone:
-git clone https://github.com/MysticalForest/Skibsredder.git
+git clone https://github.com/MystericalForest/Skibsredder.git
 
 Commit:
 git add .

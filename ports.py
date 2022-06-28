@@ -1,4 +1,4 @@
-import port
+import port, goods
 
 class Ports:
   def __init__(self):
@@ -8,8 +8,19 @@ class Ports:
     self.display_node = None
 
   def load_init(self):
-    self.append(port.Port("New York", 20, 480, 280))
-    self.append(port.Port("London", 24, 850, 220))
+    tmp=port.Port("New York", 20, 480, 280)
+    tmp.append_wanted_goods(goods.Goods("Steel", 50))
+    tmp.append_wanted_goods(goods.Goods("Wood", 50))
+    tmp.append_goods_on_sale(goods.Goods("Coal", 10))
+    tmp.append_goods_on_sale(goods.Goods("Textil", 30))
+    self.append(tmp)
+    print(self.head.goods_wanted[0].get_info())
+    tmp=port.Port("London", 24, 850, 220)
+    tmp.append_wanted_goods(goods.Goods("Oil", 100))
+    tmp.append_wanted_goods(goods.Goods("Steel", 50))
+    tmp.append_goods_on_sale(goods.Goods("Tools", 10))
+    tmp.append_goods_on_sale(goods.Goods("Textil", 50))
+    self.append(tmp)
     self.append(port.Port("Los Angeles", 18, 260, 350))
     self.append(port.Port("Shanghai", 32, 1470, 340))
     self.append(port.Port("Cape Town", 14, 950, 720))
@@ -69,5 +80,7 @@ class Ports:
           if current_node.collision(pos):
             self.display_node=current_node
           current_node=current_node.next
+      if self.display_node is not None:
+        self.display_node.generate_text()
       
 
